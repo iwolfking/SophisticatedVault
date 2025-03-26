@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.iwolfking.sophisticatedvault.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "sophisticatedvault.refmap.json",
+  "mixins": [
+    "MixinWoodenStorageBlockBase",
+    "VaultChestRendererAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
