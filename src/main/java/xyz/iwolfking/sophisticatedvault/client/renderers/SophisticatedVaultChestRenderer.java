@@ -10,13 +10,19 @@ import iskallia.vault.init.ModBlocks;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.model.BlockModel;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -66,9 +72,36 @@ public class SophisticatedVaultChestRenderer implements BlockEntityRenderer<Soph
         VaultChestModel model = (VaultChestModel) VaultChestRendererAccessor.getMapOfModels().get(block);
         if (model != null) {
             this.customRender(model, sophisticatedVaultChestEntity, v, poseStack, multiBufferSource, i, i1);
-        } else {
-            render(sophisticatedVaultChestEntity, v, poseStack, multiBufferSource, i, i1);
         }
+        else {
+            renderFallbackBlockModel(sophisticatedVaultChestEntity, poseStack, multiBufferSource, i, i1);
+        }
+    }
+
+
+    private void renderFallbackBlockModel(SophisticatedVaultChestEntity chestEntity, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+        Minecraft mc = Minecraft.getInstance();
+
+        // For fallback you can either use the same state, or hardcode dirt:
+        BlockState fallbackState = chestEntity.getBlockState();
+
+        BakedModel bakedModel = mc.getBlockRenderer().getBlockModel(fallbackState);
+
+        poseStack.pushPose();
+        mc.getBlockRenderer().getModelRenderer().renderModel(
+                poseStack.last(),
+                bufferSource.getBuffer(RenderType.cutout()),
+                fallbackState,
+                bakedModel,
+                1.0F, 1.0F, 1.0F,
+                packedLight,
+                packedOverlay
+        );
+        if (this.shouldRenderDisplayItem(chestEntity.getBlockPos())) {
+            LockRenderer.renderLock(chestEntity, poseStack, bufferSource, packedLight, packedOverlay, 0.5125F, () -> false);
+            this.displayItemRenderer.renderDisplayItem(chestEntity, poseStack, bufferSource, packedLight, packedOverlay);
+        }
+        poseStack.popPose();
     }
 
 
@@ -208,6 +241,9 @@ public class SophisticatedVaultChestRenderer implements BlockEntityRenderer<Soph
         }
         else if (block.equals(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_GILDED_STRONGBOX)) {
             return (Material) VaultChestRenderer.NORMAL_MATERIAL_MAP.get(ModBlocks.GILDED_STRONGBOX);
+        }
+        else if(block.equals(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_UNIQUE_CRATE)) {
+            return null;
         }
         else {
             return (Material) VaultChestRenderer.NORMAL_MATERIAL_MAP.get(iskallia.vault.init.ModBlocks.TREASURE_CHEST);

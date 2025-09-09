@@ -36,6 +36,7 @@ public class ModBlocks {
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_ORNATE_STRONGBOX;
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_LIVING_STRONGBOX;
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_GILDED_STRONGBOX;
+    public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_UNIQUE_CRATE;
 
     public static final BlockEntityType<SophisticatedVaultChestEntity> SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE;
 
@@ -52,7 +53,8 @@ public class ModBlocks {
         SOPHISTICATED_VAULT_GILDED_STRONGBOX = new SophisticatedVaultChestBase(() -> 156, () -> 6);
         SOPHISTICATED_VAULT_LIVING_STRONGBOX = new SophisticatedVaultChestBase(() -> 156, () -> 6);
         SOPHISTICATED_VAULT_ORNATE_STRONGBOX = new SophisticatedVaultChestBase(() -> 156, () -> 6);
-        SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE = BlockEntityType.Builder.of(SophisticatedVaultChestEntity::new, new Block[]{SOPHISTICATED_VAULT_TREASURE_CHEST, SOPHISTICATED_VAULT_WOODEN_CHEST, SOPHISTICATED_VAULT_GILDED_CHEST, SOPHISTICATED_VAULT_FLESH_CHEST, SOPHISTICATED_VAULT_ENIGMA_CHEST, SOPHISTICATED_VAULT_LIVING_CHEST, SOPHISTICATED_VAULT_ORNATE_CHEST, SOPHISTICATED_VAULT_HARDENED_CHEST, SOPHISTICATED_VAULT_ALTAR_CHEST, SOPHISTICATED_VAULT_ORNATE_STRONGBOX, SOPHISTICATED_VAULT_LIVING_STRONGBOX, SOPHISTICATED_VAULT_GILDED_STRONGBOX}).build((Type)null);
+        SOPHISTICATED_VAULT_UNIQUE_CRATE = new SophisticatedVaultChestBase(() -> 180, () -> 2);
+        SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE = BlockEntityType.Builder.of(SophisticatedVaultChestEntity::new, new Block[]{SOPHISTICATED_VAULT_TREASURE_CHEST, SOPHISTICATED_VAULT_WOODEN_CHEST, SOPHISTICATED_VAULT_GILDED_CHEST, SOPHISTICATED_VAULT_FLESH_CHEST, SOPHISTICATED_VAULT_ENIGMA_CHEST, SOPHISTICATED_VAULT_LIVING_CHEST, SOPHISTICATED_VAULT_ORNATE_CHEST, SOPHISTICATED_VAULT_HARDENED_CHEST, SOPHISTICATED_VAULT_ALTAR_CHEST, SOPHISTICATED_VAULT_ORNATE_STRONGBOX, SOPHISTICATED_VAULT_LIVING_STRONGBOX, SOPHISTICATED_VAULT_GILDED_STRONGBOX, SOPHISTICATED_VAULT_UNIQUE_CRATE}).build((Type)null);
     }
 
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -68,6 +70,7 @@ public class ModBlocks {
         registerBlock(event, SOPHISTICATED_VAULT_GILDED_STRONGBOX, new ResourceLocation(SophisticatedStorage.MOD_ID, "gilded_strongbox"));
         registerBlock(event, SOPHISTICATED_VAULT_LIVING_STRONGBOX, new ResourceLocation(SophisticatedStorage.MOD_ID, "living_strongbox"));
         registerBlock(event, SOPHISTICATED_VAULT_ORNATE_STRONGBOX, new ResourceLocation(SophisticatedStorage.MOD_ID, "ornate_strongbox"));
+        registerBlock(event, SOPHISTICATED_VAULT_UNIQUE_CRATE, new ResourceLocation(SophisticatedStorage.MOD_ID, "unique_crate"));
 
     }
     public static void registerTileEntities(RegistryEvent.Register<BlockEntityType<?>> event) {
@@ -87,6 +90,7 @@ public class ModBlocks {
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_ORNATE_STRONGBOX);
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_GILDED_STRONGBOX);
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_LIVING_STRONGBOX);
+        registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_UNIQUE_CRATE);
     }
 
     public static void registerTileEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {

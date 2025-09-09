@@ -147,7 +147,7 @@ dependencies {
     //implementation fg.deobf('curse.maven:vault-hunters-official-mod-458203:5076087')
     implementation fg.deobf('curse.maven:sophisticated-storage-619320:4950570')
     implementation fg.deobf('curse.maven:sophisticated-core-618298:4913626')
-    implementation fg.deobf(files('libs/the_vault-1.18.2-3.15.2.3636.jar'))
+    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:6833423")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
