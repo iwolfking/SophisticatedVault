@@ -4,6 +4,8 @@ import com.mojang.datafixers.types.Type;
 import iskallia.vault.VaultMod;
 import iskallia.vault.block.VaultBarrelBlock;
 import iskallia.vault.init.ModItems;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DoubleHighBlockItem;
@@ -14,7 +16,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.p3pp3rf1y.sophisticatedcore.util.BlockItemBase;
 import net.p3pp3rf1y.sophisticatedstorage.SophisticatedStorage;
+import net.p3pp3rf1y.sophisticatedstorage.block.ShulkerBoxBlock;
+import net.p3pp3rf1y.sophisticatedstorage.item.ShulkerBoxItem;
 import xyz.iwolfking.sophisticatedvault.blocks.SophisticatedVaultChestBase;
 import xyz.iwolfking.sophisticatedvault.blocks.tiles.SophisticatedVaultChestEntity;
 import xyz.iwolfking.sophisticatedvault.client.renderers.SophisticatedVaultChestRenderer;
@@ -37,6 +42,7 @@ public class ModBlocks {
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_LIVING_STRONGBOX;
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_GILDED_STRONGBOX;
     public static final SophisticatedVaultChestBase SOPHISTICATED_VAULT_UNIQUE_CRATE;
+    public static final ShulkerBoxBlock SOPHISTICATED_VAULT_ORNATE_BARREL;
 
     public static final BlockEntityType<SophisticatedVaultChestEntity> SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE;
 
@@ -54,6 +60,7 @@ public class ModBlocks {
         SOPHISTICATED_VAULT_LIVING_STRONGBOX = new SophisticatedVaultChestBase(() -> 156, () -> 6);
         SOPHISTICATED_VAULT_ORNATE_STRONGBOX = new SophisticatedVaultChestBase(() -> 156, () -> 6);
         SOPHISTICATED_VAULT_UNIQUE_CRATE = new SophisticatedVaultChestBase(() -> 180, () -> 2);
+        SOPHISTICATED_VAULT_ORNATE_BARREL = new ShulkerBoxBlock(() -> 90, () -> 4);
         SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE = BlockEntityType.Builder.of(SophisticatedVaultChestEntity::new, new Block[]{SOPHISTICATED_VAULT_TREASURE_CHEST, SOPHISTICATED_VAULT_WOODEN_CHEST, SOPHISTICATED_VAULT_GILDED_CHEST, SOPHISTICATED_VAULT_FLESH_CHEST, SOPHISTICATED_VAULT_ENIGMA_CHEST, SOPHISTICATED_VAULT_LIVING_CHEST, SOPHISTICATED_VAULT_ORNATE_CHEST, SOPHISTICATED_VAULT_HARDENED_CHEST, SOPHISTICATED_VAULT_ALTAR_CHEST, SOPHISTICATED_VAULT_ORNATE_STRONGBOX, SOPHISTICATED_VAULT_LIVING_STRONGBOX, SOPHISTICATED_VAULT_GILDED_STRONGBOX, SOPHISTICATED_VAULT_UNIQUE_CRATE}).build((Type)null);
     }
 
@@ -71,6 +78,7 @@ public class ModBlocks {
         registerBlock(event, SOPHISTICATED_VAULT_LIVING_STRONGBOX, new ResourceLocation(SophisticatedStorage.MOD_ID, "living_strongbox"));
         registerBlock(event, SOPHISTICATED_VAULT_ORNATE_STRONGBOX, new ResourceLocation(SophisticatedStorage.MOD_ID, "ornate_strongbox"));
         registerBlock(event, SOPHISTICATED_VAULT_UNIQUE_CRATE, new ResourceLocation(SophisticatedStorage.MOD_ID, "unique_crate"));
+        registerBlock(event, SOPHISTICATED_VAULT_ORNATE_BARREL, new ResourceLocation(SophisticatedStorage.MOD_ID, "ornate_barrel"));
 
     }
     public static void registerTileEntities(RegistryEvent.Register<BlockEntityType<?>> event) {
@@ -91,6 +99,7 @@ public class ModBlocks {
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_GILDED_STRONGBOX);
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_LIVING_STRONGBOX);
         registerSophisticatedBlockItem(event, SOPHISTICATED_VAULT_UNIQUE_CRATE);
+        registerShulkerBlockItem(event, SOPHISTICATED_VAULT_ORNATE_BARREL);
     }
 
     public static void registerTileEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -139,6 +148,12 @@ public class ModBlocks {
 
     private static void registerSophisticatedBlockItem(RegistryEvent.Register<Item> event, Block block) {
         SophisticatedVaultStorageBlockItem item = new SophisticatedVaultChestItem(block);
+        item.setRegistryName(block.getRegistryName());
+        event.getRegistry().register(item);
+    }
+
+    private static void registerShulkerBlockItem(RegistryEvent.Register<Item> event, Block block) {
+        ShulkerBoxItem item = new ShulkerBoxItem(block);
         item.setRegistryName(block.getRegistryName());
         event.getRegistry().register(item);
     }

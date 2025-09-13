@@ -86,7 +86,7 @@ public class SophisticatedVaultChestEntity extends StorageBlockEntity implements
 
 
     public static void lidAnimateTick(SophisticatedVaultChestEntity chestBlockEntity) {
-        if(chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_GILDED_STRONGBOX) || chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_ORNATE_STRONGBOX) || chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_LIVING_STRONGBOX)) {
+        if(chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_GILDED_STRONGBOX) || chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_ORNATE_STRONGBOX) || chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_LIVING_STRONGBOX) || chestBlockEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_UNIQUE_CRATE)) {
             return;
         }
         else {

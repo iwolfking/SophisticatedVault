@@ -32,14 +32,4 @@ public abstract class MixinWoodenStorageBlockBase extends StorageBlockBase imple
     protected MixinWoodenStorageBlockBase(Properties properties, Supplier<Integer> numberOfInventorySlotsSupplier, Supplier<Integer> numberOfUpgradeSlotsSupplier) {
         super(properties, numberOfInventorySlotsSupplier, numberOfUpgradeSlotsSupplier);
     }
-
-//
-//    /**
-//     * @author iwolfking
-//     * @reason fix?
-//     */
-//    @Overwrite
-//    private boolean isBasicTier() {
-//        return this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "barrel")) || this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "chest")) || this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "limited_barrel_1")) || this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "limited_barrel_2")) || this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "limited_barrel_3")) || this.getRegistryName().equals(new ResourceLocation("sophisticatedstorage", "limited_barrel_4"));
-//    }
 }

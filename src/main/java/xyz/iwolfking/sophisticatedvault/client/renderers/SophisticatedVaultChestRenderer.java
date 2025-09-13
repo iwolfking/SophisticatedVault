@@ -82,7 +82,6 @@ public class SophisticatedVaultChestRenderer implements BlockEntityRenderer<Soph
     private void renderFallbackBlockModel(SophisticatedVaultChestEntity chestEntity, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         Minecraft mc = Minecraft.getInstance();
 
-        // For fallback you can either use the same state, or hardcode dirt:
         BlockState fallbackState = chestEntity.getBlockState();
 
         BakedModel bakedModel = mc.getBlockRenderer().getBlockModel(fallbackState);
