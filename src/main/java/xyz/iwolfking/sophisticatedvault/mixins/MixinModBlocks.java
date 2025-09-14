@@ -15,6 +15,9 @@ public class MixinModBlocks {
     private static Block[] addNewShulkerBoxEntities(Block[] validBlocks) {
         ArrayList<Block> entityList = new java.util.ArrayList<>(Arrays.stream(validBlocks).toList());
         entityList.add(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_ORNATE_BARREL);
+        entityList.add(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_GILDED_BARREL);
+        entityList.add(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_LIVING_BARREL);
+        entityList.add(xyz.iwolfking.sophisticatedvault.init.ModBlocks.SOPHISTICATED_VAULT_WOODEN_BARREL);
         return entityList.toArray(new Block[]{});
     }
 }
