@@ -79,6 +79,11 @@ public class SophisticatedVaultChestEntity extends StorageBlockEntity implements
         return this.openersCounter;
     }
 
+    @Override
+    protected String getStorageType() {
+        return "chest";
+    }
+
     public SophisticatedVaultChestEntity(BlockPos pos, BlockState state) {
         super(pos, state, (BlockEntityType) ModBlocks.SOPHISTICATED_VAULT_CHEST_ENTITY_BLOCK_ENTITY_TYPE);
     }

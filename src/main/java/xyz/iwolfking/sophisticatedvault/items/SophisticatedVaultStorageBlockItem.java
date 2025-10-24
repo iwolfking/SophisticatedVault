@@ -26,7 +26,6 @@ import net.p3pp3rf1y.sophisticatedstorage.block.StorageWrapper;
 import net.p3pp3rf1y.sophisticatedstorage.item.CapabilityStorageWrapper;
 import net.p3pp3rf1y.sophisticatedstorage.item.ChestBlockItem;
 import net.p3pp3rf1y.sophisticatedstorage.item.StorageContentsTooltip;
-import xyz.iwolfking.sophisticatedvault.lib.StackStorageWrapper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -91,7 +90,15 @@ public class SophisticatedVaultStorageBlockItem extends ChestBlockItem {
             private void initWrapper() {
                 if (this.wrapper == null) {
                     UUID uuid = (UUID)NBTHelper.getUniqueId(stack, "uuid").orElse((UUID) null);
-                    StorageWrapper storageWrapper = new StackStorageWrapper(stack) {
+                    StorageWrapper storageWrapper = new xyz.iwolfking.sophisticatedvault.lib.StackStorageWrapper(stack) {
+                        public String getStorageType() {
+                            return "wood_storage";
+                        }
+
+                        public Component getDisplayName() {
+                            return TextComponent.EMPTY;
+                        }
+
                         protected boolean isAllowedInStorage(ItemStack stackx) {
                             return false;
                         }
