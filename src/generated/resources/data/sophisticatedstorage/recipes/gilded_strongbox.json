@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IMI",
+    "MSM",
+    "IMI"
+  ],
+  "key": {
+    "S": {
+      "item": "sophisticatedstorage:gilded_chest"
+    },
+    "I": {
+      "item": "the_vault:extraordinary_larimar"
+    },
+    "M": {
+      "item": "the_vault:gilded_chest_scroll"
+    }
+  },
+  "result": {
+    "item": "sophisticatedstorage:gilded_strongbox"
+  }
+}

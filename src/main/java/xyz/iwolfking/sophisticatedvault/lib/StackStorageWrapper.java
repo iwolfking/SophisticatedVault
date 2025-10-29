@@ -10,16 +10,16 @@ import net.p3pp3rf1y.sophisticatedstorage.block.IStorageBlock;
 import net.p3pp3rf1y.sophisticatedstorage.block.ItemContentsStorage;
 import net.p3pp3rf1y.sophisticatedstorage.block.StorageWrapper;
 
+import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.UUID;
 
 public abstract class StackStorageWrapper extends StorageWrapper {
+    private static final String CONTENTS_TAG = "contents";
     private final ItemStack storageStack;
 
     public StackStorageWrapper(ItemStack storageStack) {
-        super(() -> {
-            return () -> {
-            };
+        super(() -> () -> {
         }, () -> {
         }, () -> {
         });
@@ -28,17 +28,29 @@ public abstract class StackStorageWrapper extends StorageWrapper {
 
     private UUID getNewUuid() {
         UUID newUuid = UUID.randomUUID();
-        NBTHelper.setUniqueId(this.storageStack, "uuid", newUuid);
-        CompoundTag mainTag = new CompoundTag();
-        CompoundTag storageWrapperTag = new CompoundTag();
-        storageWrapperTag.put("contents", new CompoundTag());
-        mainTag.put("storageWrapper", storageWrapperTag);
-        ItemContentsStorage.get().setStorageContents(newUuid, mainTag);
+        this.setContentsUuid(newUuid);
         return newUuid;
     }
 
     public Optional<UUID> getContentsUuid() {
         return Optional.ofNullable(this.contentsUuid);
+    }
+
+    public void setContentsUuid(@Nullable UUID contentsUuid) {
+        super.setContentsUuid(contentsUuid);
+        if (contentsUuid != null) {
+            NBTHelper.setUniqueId(this.storageStack, "uuid", contentsUuid);
+            ItemContentsStorage itemContentsStorage = ItemContentsStorage.get();
+            CompoundTag storageContents = itemContentsStorage.getOrCreateStorageContents(contentsUuid);
+            if (!storageContents.contains("storageWrapper")) {
+                CompoundTag storageWrapperTag = new CompoundTag();
+                storageWrapperTag.put("contents", new CompoundTag());
+                storageContents.put("storageWrapper", storageWrapperTag);
+            }
+
+            this.onContentsNbtUpdated();
+        }
+
     }
 
     protected CompoundTag getContentsNbt() {

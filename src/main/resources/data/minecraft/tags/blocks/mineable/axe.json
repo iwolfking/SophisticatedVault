@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "sophisticatedstorage:ornate_chest",
+    "sophisticatedstorage:wooden_chest",
+    "sophisticatedstorage:living_chest",
+    "sophisticatedstorage:gilded_chest",
+    "sophisticatedstorage:hardened_chest",
+    "sophisticatedstorage:flesh_chest",
+    "sophisticatedstorage:enigma_chest",
+    "sophisticatedstorage:altar_chest",
+    "sophisticatedstorage:gilded_strongbox",
+    "sophisticatedstorage:ornate_strongbox",
+    "sophisticatedstorage:living_strongbox",
+    "sophisticatedstorage:treasure_chest",
+    "sophisticatedstorage:unique_crate",
+    "sophisticatedstorage:ornate_barrel",
+    "sophisticatedstorage:wooden_barrel",
+    "sophisticatedstorage:gilded_barrel",
+    "sophisticatedstorage:living_barrel"
+  ]
+}

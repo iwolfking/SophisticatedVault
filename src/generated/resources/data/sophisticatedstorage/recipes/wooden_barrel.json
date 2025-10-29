@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IMI",
+    "MSM",
+    "IMI"
+  ],
+  "key": {
+    "S": {
+      "item": "the_vault:wooden_chest_scroll"
+    },
+    "M": {
+      "item": "the_vault:extraordinary_painite"
+    },
+    "I": {
+      "item": "the_vault:black_chromatic_steel_ingot"
+    }
+  },
+  "result": {
+    "item": "sophisticatedstorage:wooden_barrel"
+  }
+}
