@@ -28,13 +28,12 @@ import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.Vec3;
-import net.p3pp3rf1y.sophisticatedstorage.block.StorageWrapper;
-import net.p3pp3rf1y.sophisticatedstorage.block.WoodStorageBlockBase;
-import net.p3pp3rf1y.sophisticatedstorage.block.WoodStorageBlockEntity;
+import net.p3pp3rf1y.sophisticatedstorage.block.*;
 import net.p3pp3rf1y.sophisticatedstorage.client.ClientEventHandler;
 import net.p3pp3rf1y.sophisticatedstorage.client.StorageTextureManager;
 import net.p3pp3rf1y.sophisticatedstorage.client.render.DisplayItemRenderer;
 import net.p3pp3rf1y.sophisticatedstorage.client.render.LockRenderer;
+import org.spongepowered.asm.mixin.Unique;
 import xyz.iwolfking.sophisticatedvault.blocks.SophisticatedVaultChestBase;
 import xyz.iwolfking.sophisticatedvault.blocks.tiles.SophisticatedVaultChestEntity;
 import xyz.iwolfking.sophisticatedvault.mixins.VaultChestRendererAccessor;
@@ -102,6 +101,8 @@ public class SophisticatedVaultChestRenderer implements BlockEntityRenderer<Soph
         }
         poseStack.popPose();
     }
+
+
 
 
     public void customRender(VaultChestModel model,  SophisticatedVaultChestEntity chestEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {

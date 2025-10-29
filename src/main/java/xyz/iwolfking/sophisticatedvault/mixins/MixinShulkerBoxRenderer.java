@@ -32,7 +32,7 @@ public abstract class MixinShulkerBoxRenderer extends StorageRenderer<ShulkerBox
 
     @Inject(method = "render(Lnet/p3pp3rf1y/sophisticatedstorage/block/ShulkerBoxBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V", at = @At("HEAD"), cancellable = true)
     private void renderBarrels(ShulkerBoxBlockEntity shulkerBoxEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay, CallbackInfo ci) {
-        if(shulkerBoxEntity.getBlockState().getBlock().equals(ModBlocks.SOPHISTICATED_VAULT_ORNATE_BARREL)) {
+        if(ModBlocks.BARREL_BLOCKS.contains(shulkerBoxEntity.getBlockState().getBlock())) {
             sophisticatedvault$renderFallbackBlockModel(shulkerBoxEntity, poseStack, bufferSource, packedLight, packedOverlay);
             ci.cancel();
         }
@@ -57,16 +57,13 @@ public abstract class MixinShulkerBoxRenderer extends StorageRenderer<ShulkerBox
 
         poseStack.pushPose();
 
-        // Translate to the center of the block
+
         poseStack.translate(0.5D, 0.5D, 0.5D);
 
-        // Scale to make the model slightly smaller (if needed)
         poseStack.scale(0.9995F, 0.9995F, 0.9995F);
 
-        // Rotate based on the direction
         poseStack.mulPose(direction.getRotation());
 
-        // Translate back to position before rotation
         poseStack.translate(-0.5D, -0.5D, -0.5D);
 
         mc.getBlockRenderer().getModelRenderer().renderModel(
@@ -78,20 +75,20 @@ public abstract class MixinShulkerBoxRenderer extends StorageRenderer<ShulkerBox
                 packedLight,
                 packedOverlay
         );
-
         poseStack.popPose();
-
         poseStack.pushPose();
 
-        poseStack.translate(0.5D, 0.5D, 0.5D);
-        if (shulkerBoxEntity.shouldShowUpgrades() || holdsItemThatShowsUpgrades()) {
-            displayItemRenderer.renderUpgradeItems(shulkerBoxEntity, poseStack, bufferSource, packedLight, packedOverlay, holdsItemThatShowsUpgrades(), shouldShowDisabledUpgradesDisplay(shulkerBoxEntity));
-        }
+        poseStack.translate((double)0.5F, (double)0.5F, (double)0.5F);
+        poseStack.mulPose(DisplayItemRenderer.getNorthBasedRotation(direction));
+        poseStack.translate((double)-0.5F, (double)-0.5F, (double)-0.5F);
 
         LockRenderer.renderLock(shulkerBoxEntity, poseStack, bufferSource, packedLight, packedOverlay, 0.5125F, () -> false);
         this.displayItemRenderer.renderDisplayItem(shulkerBoxEntity, poseStack, bufferSource, packedLight, packedOverlay);
-
+        if (shulkerBoxEntity.shouldShowUpgrades() || holdsItemThatShowsUpgrades()) {
+            displayItemRenderer.renderUpgradeItems(shulkerBoxEntity, poseStack, bufferSource, packedLight, packedOverlay, holdsItemThatShowsUpgrades(), shouldShowDisabledUpgradesDisplay(shulkerBoxEntity));
+        }
         poseStack.popPose();
     }
+
 
 }

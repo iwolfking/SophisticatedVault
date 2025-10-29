@@ -6,6 +6,7 @@
   "refmap": "sophisticatedvault.refmap.json",
   "mixins": [
     "MixinModBlocks",
+    "MixinShulkerBoxBlock",
     "MixinShulkerBoxEntity",
     "MixinWoodenStorageBlockBase",
     "VaultChestRendererAccessor"

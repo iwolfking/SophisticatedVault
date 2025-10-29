@@ -155,6 +155,19 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
+
+    runtimeOnly fg.deobf('curse.maven:curios-309927:4985315')
+    implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:4950560")
+    implementation fg.deobf('curse.maven:quark-243121:3840125')
+    implementation fg.deobf("curse.maven:geckolib-388172:4181370")
+    implementation fg.deobf('curse.maven:alexs-mobs-426558:3853078')
+    implementation fg.deobf("curse.maven:citadel4-331936:3783096") // alex's mobs dep
+    // deps needed for runtime debug
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382") // quark
+    runtimeOnly fg.deobf("curse.maven:auxblocks-711533:4358959") // vault blocks
+    runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4521465") // lot of mods
+    runtimeOnly fg.deobf("curse.maven:patchouli-306770:3846086")
+
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
