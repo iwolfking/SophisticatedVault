@@ -21,7 +21,7 @@ import xyz.iwolfking.sophisticatedvault.init.ModBlocks;
 
 import java.util.function.Supplier;
 
-@Mixin(value = ShulkerBoxBlock.class, remap = false)
+@Mixin(value = ShulkerBoxBlock.class)
 public abstract class MixinShulkerBoxBlock  extends StorageBlockBase implements IAdditionalDropDataBlock {
 
     protected MixinShulkerBoxBlock(Properties properties, Supplier<Integer> numberOfInventorySlotsSupplier, Supplier<Integer> numberOfUpgradeSlotsSupplier) {
