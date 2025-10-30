@@ -15,7 +15,9 @@
     "P": {
       "item": "the_vault:driftwood_planks"
     },
-    "S": [],
+    "S": {
+      "item": "the_vault:driftwood_stairs"
+    },
     "R": {
       "item": "minecraft:redstone_torch"
     }

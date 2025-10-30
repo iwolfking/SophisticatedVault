@@ -15,7 +15,9 @@
     "P": {
       "item": "the_vault:overgrown_wooden_planks"
     },
-    "S": [],
+    "S": {
+      "item": "the_vault:overgrown_wooden_slab"
+    },
     "R": {
       "item": "minecraft:redstone_torch"
     }

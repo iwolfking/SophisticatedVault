@@ -15,7 +15,9 @@
     "P": {
       "item": "the_vault:chromatic_planks"
     },
-    "S": [],
+    "S": {
+      "item": "the_vault:chromatic_slab"
+    },
     "R": {
       "item": "minecraft:redstone_torch"
     }
