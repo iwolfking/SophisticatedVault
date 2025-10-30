@@ -1,0 +1,28 @@
+{
+  "type": "sophisticatedstorage:storage_tier_upgrade",
+  "conditions": [
+    {
+      "itemRegistryName": "sophisticatedstorage:gold_chest",
+      "type": "sophisticatedcore:item_enabled"
+    }
+  ],
+  "pattern": [
+    "VGV",
+    "GSG",
+    "VGV"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "V": {
+      "item": "the_vault:chromatic_steel_ingot"
+    },
+    "S": {
+      "item": "sophisticatedstorage:iron_chest"
+    }
+  },
+  "result": {
+    "item": "sophisticatedstorage:gold_chest"
+  }
+}

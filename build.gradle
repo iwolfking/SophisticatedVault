@@ -161,6 +161,7 @@ dependencies {
     implementation fg.deobf('curse.maven:quark-243121:3840125')
     implementation fg.deobf("curse.maven:geckolib-388172:4181370")
     implementation fg.deobf('curse.maven:alexs-mobs-426558:3853078')
+    implementation fg.deobf("curse.maven:vault-hunters-api-1118899:7102779")
     implementation fg.deobf("curse.maven:citadel4-331936:3783096") // alex's mobs dep
     // deps needed for runtime debug
     runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382") // quark

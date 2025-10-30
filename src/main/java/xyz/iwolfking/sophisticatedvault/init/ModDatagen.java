@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import xyz.iwolfking.sophisticatedvault.datagen.ModRecipeProvider;
+import xyz.iwolfking.sophisticatedvault.datagen.StorageRecipeProviderReplacement;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModDatagen {
@@ -17,6 +18,7 @@ public class ModDatagen {
 
             if (event.includeServer()) {
                 generator.addProvider(new ModRecipeProvider(generator));
+                generator.addProvider(new StorageRecipeProviderReplacement(generator));
             }
         }
 }

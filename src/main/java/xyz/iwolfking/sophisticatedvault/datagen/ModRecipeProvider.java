@@ -77,7 +77,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("MSM")
                 .pattern("IMI")
                 .unlockedBy("has_" + scrollItem.asItem().getRegistryName().getPath(), has(scrollItem))
-                .save(consumer);
+                .save(consumer, SophisticatedVault.id(output.asItem().getRegistryName().getPath()));
     }
 
     private void strongboxUpgrade(Consumer<FinishedRecipe> consumer, ItemLike output, ItemLike chestItem, ItemLike scrollItem, ItemLike tertiaryCost) {
@@ -89,7 +89,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("MSM")
                 .pattern("IMI")
                 .unlockedBy("has_" + chestItem.asItem().getRegistryName().getPath(), has(chestItem))
-                .save(consumer);
+                .save(consumer, SophisticatedVault.id(output.asItem().getRegistryName().getPath()));
     }
 
     private void woodChestRecipe(Consumer<FinishedRecipe> consumer, WoodType woodType, Block planks) {

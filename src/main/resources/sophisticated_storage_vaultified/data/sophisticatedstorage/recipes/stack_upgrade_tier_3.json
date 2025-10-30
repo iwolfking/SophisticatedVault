@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [
+    {
+      "itemRegistryName": "sophisticatedstorage:stack_upgrade_tier_3",
+      "type": "sophisticatedcore:item_enabled"
+    }
+  ],
+  "pattern": [
+    "GBG",
+    "GSG",
+    "BGB"
+  ],
+  "key": {
+    "S": {
+      "item": "sophisticatedstorage:stack_upgrade_tier_2"
+    },
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "B": {
+      "item": "the_vault:perfect_larimar"
+    }
+  },
+  "result": {
+    "item": "sophisticatedstorage:stack_upgrade_tier_3"
+  }
+}

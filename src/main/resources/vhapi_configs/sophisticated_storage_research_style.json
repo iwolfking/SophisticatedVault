@@ -1,0 +1,10 @@
+{
+  "styles": {
+    "Sophisticated Storage": {
+      "x": 60,
+      "y": -35,
+      "frameType": "RECTANGULAR",
+      "icon": "the_vault:gui/researches/sophisticated_storage"
+    }
+  }
+}

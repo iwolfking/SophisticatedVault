@@ -1,6 +1,8 @@
 package xyz.iwolfking.sophisticatedvault;
 
 import com.mojang.logging.LogUtils;
+import iskallia.vault.init.ModConfigs;
+import iskallia.vault.research.group.ResearchGroup;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
@@ -14,7 +16,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -26,9 +30,12 @@ import net.p3pp3rf1y.sophisticatedcore.util.WorldHelper;
 import net.p3pp3rf1y.sophisticatedstorage.Config;
 import net.p3pp3rf1y.sophisticatedstorage.client.gui.StorageTranslationHelper;
 import net.p3pp3rf1y.sophisticatedstorage.init.ModItems;
-import org.slf4j.Logger;
 import xyz.iwolfking.sophisticatedvault.blocks.SophisticatedVaultChestBase;
 import xyz.iwolfking.sophisticatedvault.blocks.tiles.SophisticatedVaultChestEntity;
+import xyz.iwolfking.sophisticatedvault.config.SophisticatedVaultConfig;
+import xyz.iwolfking.sophisticatedvault.init.ModAddons;
+import xyz.iwolfking.sophisticatedvault.integration.VHAPIIntegration;
+import xyz.iwolfking.vhapi.api.events.VaultConfigEvent;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -36,27 +43,30 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Mod("sophisticatedvault")
 public class SophisticatedVault {
 
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "sophisticatedvault";
 
     public SophisticatedVault() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, SophisticatedVaultConfig.COMMON_SPEC, "sophisticated-vault-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SophisticatedVaultConfig.SERVER_SPEC, "sophisticated-vault-server.toml");
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModAddons::onAddPackFinders);
 
         IEventBus eventBus = MinecraftForge.EVENT_BUS;
         eventBus.addListener(this::onBlockBreak);
+
+        eventBus.addListener(this::onVaultConfigsLoad);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
+        VHAPIIntegration.initiateConfigs();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -73,10 +83,13 @@ public class SophisticatedVault {
 
     }
 
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
+    private void onVaultConfigsLoad(VaultConfigEvent.End event) {
+        if(event.getType() == VaultConfigEvent.Type.NORMAL) {
+            if(SophisticatedVaultConfig.COMMON.enableSophisticatedStorageResearch.get()) {
+                ResearchGroup storageGroup = ModConfigs.RESEARCH_GROUPS.getGroups().get("Storage");
+                storageGroup.getResearch().add("Sophisticated Storage");
+            }
+        }
     }
 
     private void onBlockBreak(BlockEvent.BreakEvent event) {

@@ -1,0 +1,8 @@
+{
+  "ITEM_BLACKLIST": [
+    "sophisticatedstorage:*"
+  ],
+  "BLOCK_BLACKLIST": [
+    "sophisticatedstorage:*"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "groups": {
+    "Storage": {
+      "title": "Storage",
+      "research": [
+        "Sophisticated Storage"
+      ],
+      "globalCostIncrease": 0.0,
+      "groupCostIncrease": {
+        "Storage": 0.24
+      }
+    }
+  }
+}

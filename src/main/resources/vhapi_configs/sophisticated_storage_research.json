@@ -1,0 +1,22 @@
+{
+  "MOD_RESEARCHES": [
+    {
+      "modIds": [
+        "sophisticatedstorage"
+      ],
+      "restrictions": {
+        "restricts": {
+          "HITTABILITY": true,
+          "BLOCK_INTERACTABILITY": true,
+          "USABILITY": true,
+          "CRAFTABILITY": true,
+          "ENTITY_INTERACTABILITY": true
+        }
+      },
+      "name": "Sophisticated Storage",
+      "cost": 2,
+      "usesKnowledge": true
+    }
+  ],
+  "CUSTOM_RESEARCHES": []
+}

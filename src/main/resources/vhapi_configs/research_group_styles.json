@@ -1,0 +1,14 @@
+{
+  "groupStyles": {
+    "Storage": {
+      "group": "Storage",
+      "headerColor": -10758712,
+      "headerTextColor": -1,
+      "x": -10,
+      "y": -60,
+      "boxWidth": 170,
+      "boxHeight": 140,
+      "icon": "the_vault:gui/research_groups/storage"
+    }
+  }
+  }
