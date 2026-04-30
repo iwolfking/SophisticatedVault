@@ -147,7 +147,7 @@ dependencies {
     //implementation fg.deobf('curse.maven:vault-hunters-official-mod-458203:5076087')
     implementation fg.deobf("curse.maven:sophisticated-storage-619320:5809745")
     implementation fg.deobf("curse.maven:sophisticated-core-618298:5296312")
-    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:6833423")
+    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:7316662")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -155,7 +155,7 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
-
+    implementation fg.deobf('local:vhapi:4.8.0')
     runtimeOnly fg.deobf('curse.maven:curios-309927:4985315')
     implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:5654080")
     implementation fg.deobf('curse.maven:quark-243121:3840125')

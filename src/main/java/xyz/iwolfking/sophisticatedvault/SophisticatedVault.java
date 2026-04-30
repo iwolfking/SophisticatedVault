@@ -84,12 +84,11 @@ public class SophisticatedVault {
     }
 
     private void onVaultConfigsLoad(VaultConfigEvent.End event) {
-        if(event.getType() == VaultConfigEvent.Type.NORMAL) {
-            if(SophisticatedVaultConfig.COMMON.enableSophisticatedStorageResearch.get()) {
+        if(SophisticatedVaultConfig.COMMON.enableSophisticatedStorageResearch.get()) {
                 ResearchGroup storageGroup = ModConfigs.RESEARCH_GROUPS.getGroups().get("Storage");
                 storageGroup.getResearch().add("Sophisticated Storage");
-            }
         }
+
     }
 
     private void onBlockBreak(BlockEvent.BreakEvent event) {
