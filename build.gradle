@@ -13,6 +13,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
+    id 'com.radimous.vh-addon-dev' version '0.3.6'
 }
 
 apply plugin: 'org.spongepowered.mixin'
@@ -147,7 +148,8 @@ dependencies {
     //implementation fg.deobf('curse.maven:vault-hunters-official-mod-458203:5076087')
     implementation fg.deobf("curse.maven:sophisticated-storage-619320:5809745")
     implementation fg.deobf("curse.maven:sophisticated-core-618298:5296312")
-    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:7316662")
+    implementation fg.deobf("curse.maven:vault-hunters-official-mod-458203:8508967")
+    runtimeOnly fg.deobf("curse.maven:jei-238222:5846864")
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -155,13 +157,12 @@ dependencies {
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
-    implementation fg.deobf('local:vhapi:4.8.0')
     runtimeOnly fg.deobf('curse.maven:curios-309927:4985315')
     implementation fg.deobf("curse.maven:sophisticated-backpacks-422301:5654080")
     implementation fg.deobf('curse.maven:quark-243121:3840125')
     implementation fg.deobf("curse.maven:geckolib-388172:4181370")
     implementation fg.deobf('curse.maven:alexs-mobs-426558:3853078')
-    implementation fg.deobf("curse.maven:vault-hunters-api-1118899:7102779")
+    implementation fg.deobf("curse.maven:vault-hunters-api-1118899:8466134")
     implementation fg.deobf("curse.maven:citadel4-331936:3783096") // alex's mobs dep
     // deps needed for runtime debug
     runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382") // quark
